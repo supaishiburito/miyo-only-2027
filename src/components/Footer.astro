@@ -1,0 +1,24 @@
+---
+import { disclaimer, event } from "../config/event";
+import { externalUrl } from "../utils/content";
+import Brand from "./Brand.astro";
+const x = externalUrl(event.contact.xUrl);
+---
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <Brand />
+      <p>
+        {event.subtitle} / 主催：{event.organizer ?? "未定"}
+      </p>
+    </div>
+    <nav aria-label="フッターナビゲーション">
+      <a href="/contact/">お問い合わせ</a>
+      <a href="/privacy/">プライバシーポリシー</a>
+      {x && <a href={x}>X</a>}
+      <a href="#top">ページ上部へ ↑</a>
+    </nav>
+    <small>{disclaimer}</small>
+  </div>
+</footer>

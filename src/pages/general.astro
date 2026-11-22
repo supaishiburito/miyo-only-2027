@@ -1,0 +1,28 @@
+---
+import Interior from "../layouts/Interior.astro";
+import Tickets from "../components/Tickets.astro";
+import FaqList from "../components/FaqList.astro";
+import { event, tba } from "../config/event";
+import { ticketFaq } from "../data/faq";
+---
+
+<Interior
+  title="一般参加のご案内"
+  description="前売り券・当日券と、当日の入場方法をご案内します。"
+>
+  <Tickets />
+  <section class="panel">
+    <h2>入場の流れ</h2>
+    <p>{event.ticket.qrInstructions ?? tba}</p>
+    <h3>入場時の注意事項</h3>
+    <p>{event.ticket.rules ?? tba}</p>
+    <h3>再入場</h3>
+    <p>{event.ticket.reentry ?? tba}</p>
+    <h3>キャンセル・払い戻し</h3>
+    <p>{event.ticket.refund ?? tba}</p>
+  </section>
+  <section>
+    <h2 class="subheading">チケットについてのよくある質問</h2>
+    <FaqList items={ticketFaq} />
+  </section>
+</Interior>

@@ -1,0 +1,27 @@
+---
+import "../styles/intro.css";
+---
+
+<div class="site-intro" aria-hidden="true">
+  <svg viewBox="0 0 64 70" width="64" height="70" focusable="false">
+    <defs>
+      <path
+        id="intro-leaf"
+        d="M32 31c-5-4-13-10-13-17a7 7 0 0 1 13-3.6A7 7 0 0 1 45 14c0 7-8 13-13 17Z"
+      />
+    </defs>
+    <path
+      d="M32 33c-1 12 3 23 14 29"
+      fill="none"
+      stroke="#4c704d"
+      stroke-width="2.4"
+      stroke-linecap="round"
+    />
+    <g transform="rotate(13 32 32)">
+      <use href="#intro-leaf" fill="#789b68" />
+      <use href="#intro-leaf" transform="rotate(90 32 32)" fill="#65875b" />
+      <use href="#intro-leaf" transform="rotate(180 32 32)" fill="#75956a" />
+      <use href="#intro-leaf" transform="rotate(270 32 32)" fill="#5d8056" />
+    </g>
+  </svg>
+</div>

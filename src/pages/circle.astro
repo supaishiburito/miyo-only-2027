@@ -1,0 +1,57 @@
+---
+import Interior from "../layouts/Interior.astro";
+import Icon from "../components/Icon.astro";
+import InfoTable from "../components/InfoTable.astro";
+import { event, tba } from "../config/event";
+import {
+  applicationLabel as label,
+  applicationUrl,
+  yen,
+} from "../utils/content";
+const app = event.circle;
+---
+
+<Interior
+  title="サークル参加のご案内"
+  description="サークル参加の募集要項と、お申し込みの流れをご案内します。"
+>
+  <section class="panel">
+    <span class="badge">{label}</span>
+    <h2>サークル参加申込</h2>
+    <p>
+      {applicationUrl
+        ? "募集要項をご確認のうえ、外部フォームからお申し込みください。"
+        : app.status === "closed"
+          ? "サークル参加の受付は終了しました。"
+          : tba}
+    </p>
+    {applicationUrl ? (
+      <a class="button primary" href={applicationUrl}>
+        サークル参加を申し込む <Icon name="arrow" size={17} />
+      </a>
+    ) : (
+      <button class="button primary" disabled>
+        サークル参加申込 {label}
+      </button>
+    )}
+  </section>
+  <section>
+    <h2 class="subheading">募集要項</h2>
+    <InfoTable
+      rows={[
+        ["申込開始", app.startDate ?? "未定"],
+        ["申込締切", app.deadline ?? "未定"],
+        ["スペース参加費", yen(app.fee)],
+        ["参加資格", app.eligibility ?? tba],
+        ["サークルカット", app.cut ?? tba],
+        ["頒布物の規定", app.works ?? tba],
+        ["成人向け作品（R18）", app.adultWorks ?? tba],
+        ["キャンセル", app.cancellation ?? tba],
+      ]}
+    />
+  </section>
+  <section class="panel">
+    <h2>お申し込みの流れ</h2>
+    <p>{app.reviewAndPayment ?? tba}</p>
+  </section>
+</Interior>

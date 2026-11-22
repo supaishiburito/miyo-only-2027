@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 230" fill="none">
+  <defs>
+    <g id="leaf">
+      <path d="M0 0C-1-14 8-27 24-32 23-17 16-6 0 0Z" fill="#9dab87" fill-opacity=".34" stroke="#738563" />
+      <path d="M0 0 17-24" stroke="#738563" stroke-opacity=".67"/>
+    </g>
+    <g id="blossom">
+      <path d="M0 0C-9-6-10-13-4-14 0-14 2-10 2-6 6-15 13-14 13-8 13-4 8-1 4 0 16 0 16 8 10 10 6 11 3 7 2 4 3 14-5 16-7 10-9 7-6 3-3 2-12 5-16-2-11-5-7-7-3-4 0 0Z" fill="#f0dbd6" stroke="#9f8077"/>
+      <circle r="2" fill="#a68757"/>
+    </g>
+  </defs>
+  <g stroke="#78886a" stroke-width="1.15" stroke-linecap="round">
+    <path d="M21 217c74-1 111-41 121-99 5-29 1-48 13-71M46 214c54-23 64-66 59-114M99 194c37 2 65-15 79-44"/>
+    <path d="M72 208c-24-4-38-16-40-31 0-8 9-10 12-2M138 149c22-17 34-16 36-7M105 126c-22-17-33-18-38-14"/>
+    <use href="#leaf" transform="translate(64 209) rotate(-75) scale(.8)"/>
+    <use href="#leaf" transform="translate(86 193) rotate(58) scale(.71)"/>
+    <use href="#leaf" transform="translate(98 171) rotate(-68) scale(.95)"/>
+    <use href="#leaf" transform="translate(102 151) rotate(37) scale(.75)"/>
+    <use href="#leaf" transform="translate(104 129) rotate(-64) scale(.64)"/>
+    <use href="#leaf" transform="translate(124 170) rotate(83) scale(.84)"/>
+    <use href="#leaf" transform="translate(136 146) rotate(-28) scale(.8)"/>
+    <use href="#leaf" transform="translate(142 122) rotate(53) scale(.95)"/>
+    <use href="#leaf" transform="translate(144 99) rotate(-48) scale(.88)"/>
+    <use href="#leaf" transform="translate(146 74) rotate(38) scale(.77)"/>
+    <use href="#leaf" transform="translate(163 172) rotate(65) scale(.72)"/>
+    <use href="#leaf" transform="translate(151 184) rotate(-12) scale(.5)"/>
+    <use href="#blossom" transform="translate(157 44) rotate(23) scale(1.2)"/>
+    <use href="#blossom" transform="translate(105 98) rotate(-32) scale(.84)"/>
+    <use href="#blossom" transform="translate(177 151) rotate(14) scale(.72)"/>
+    <use href="#blossom" transform="translate(67 112) rotate(34) scale(.46)"/>
+  </g>
+</svg>

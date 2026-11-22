@@ -1,0 +1,202 @@
+/* Homepage sections */
+.section-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+.section-flourish {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--accent);
+}
+.section-flourish::after {
+  content: "";
+  height: 1px;
+  width: 2.2rem;
+  background: #bcaa82;
+}
+.section-title h2 {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 650;
+  letter-spacing: 0.075em;
+  line-height: 1.4;
+}
+.about-section {
+  padding-block: clamp(1.7rem, 4vw, 3.75rem);
+  border-bottom: 1px solid #d6dfce;
+  background: radial-gradient(ellipse at 50% 2%, #f5f5e9, #e6edde 78%);
+}
+.about-book {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  isolation: isolate;
+  border: 1px solid #bfc9b4;
+  border-radius: 4px 10px 8px 4px;
+  background: var(--cream);
+  box-shadow:
+    0 5px 0 -2px #faf7e9,
+    0 6px 0 -2px #bac8b4,
+    0 11px 17px -13px #28453499;
+}
+.about-book::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  z-index: -1;
+  border: 1px solid #d9dcca;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.about-intro {
+  padding: clamp(1.75rem, 4.2vw, 3.8rem);
+  background: url("/images/botanical-sprig.svg") right 0.7rem bottom 0.7rem /
+    clamp(60px, 12vw, 155px) auto no-repeat;
+}
+.about-intro > p {
+  margin-block: 0.8rem 0;
+  color: var(--muted);
+  max-width: 26rem;
+  line-height: 2.05;
+}
+.about-facts {
+  padding: clamp(1.8rem, 3vw, 2.85rem);
+  background: linear-gradient(90deg, #9b9b7e21 0, transparent 14px);
+}
+.about-facts .info-table {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.about-facts .info-table div {
+  border-bottom: 1px solid var(--border);
+  padding-inline: 0.25rem;
+}
+.about-facts .info-table div + div {
+  border-top: 0;
+}
+.about-facts .info-table div:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 0.9rem;
+}
+@media (max-width: 740px) {
+  .about-book {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .about-intro {
+    padding-bottom: 1rem;
+    background-size: 82px;
+  }
+  .about-intro > p {
+    padding-right: 1.25rem;
+    word-break: auto-phrase;
+  }
+  .about-facts {
+    padding-top: 0.55rem;
+    background: none;
+  }
+  .about-facts dd {
+    text-wrap: balance;
+  }
+}
+
+.home-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.8rem, 4.6vw, 3.7rem);
+  padding-block: clamp(2.1rem, 5vw, 4.1rem);
+}
+.home-details > section + section {
+  border-top: 1px solid var(--border);
+  padding-top: clamp(1.25rem, 3vw, 2rem);
+}
+.home-details .section-title {
+  margin-bottom: 0.9rem;
+}
+.home-details .section-title h2 {
+  font-size: clamp(1.45rem, 2.65vw, 2.1rem);
+}
+.home-details .circle-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.home-access-note {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.home-details .circle-card {
+  padding: clamp(0.55rem, 1.2vw, 1rem);
+}
+.home-details .circle-card :is(h2, h3) {
+  margin-bottom: 0;
+}
+.home-map {
+  overflow: hidden;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.home-map-meta {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  gap: 0.45rem 1rem;
+}
+.home-map-location {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 1rem;
+}
+.home-map-location svg {
+  flex: none;
+}
+.home-map iframe {
+  display: block;
+  width: 100%;
+  height: clamp(240px, 30vw, 330px);
+  border: 0;
+  border-top: 1px solid var(--border);
+  background: #e8eee2;
+}
+.home-details-link {
+  margin-top: 0.75rem;
+}
+
+.home-contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.contact-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--cream);
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+.contact-icon:hover {
+  border-color: #879f8b;
+  background: var(--color-sage);
+}
+
+@media (max-width: 680px) {
+  .home-details .circle-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

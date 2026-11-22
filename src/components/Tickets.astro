@@ -1,0 +1,52 @@
+---
+import { event } from "../config/event";
+import { presaleUrl, saleLabel, yen } from "../utils/content";
+import Icon from "./Icon.astro";
+const { presale, onsite } = event.ticket;
+const purchase =
+  presale.enabled && presale.status === "selling" ? presaleUrl : undefined;
+---
+
+<div class="ticket-grid">
+  <article class="panel">
+    <span class="mini-icon">
+      <Icon name="ticket" />
+    </span>
+    <span class="badge">{saleLabel(presale)}</span>
+    <h2>前売り券</h2>
+    <p>オンラインで購入するチケットです。</p>
+    <strong class="price">{yen(presale.price)}</strong>
+    {(presale.startDate || presale.endDate) && (
+      <p>
+        販売期間：{presale.startDate ?? "未定"} ～ {presale.endDate ?? "未定"}
+      </p>
+    )}
+    {purchase ? (
+      <a class="button primary" href={purchase}>
+        チケットを購入する <Icon name="arrow" size={17} />
+      </a>
+    ) : (
+      <button class="button primary" disabled>
+        チケットを購入する
+      </button>
+    )}
+  </article>
+  <article class="panel">
+    <span class="mini-icon">
+      <Icon name="pin" />
+    </span>
+    <span class="badge">{onsite.enabled ? saleLabel(onsite) : "販売なし"}</span>
+    <h2>当日券</h2>
+    <p>
+      {onsite.enabled
+        ? "会場で販売するチケットです。"
+        : "会場での当日券販売はありません。"}
+    </p>
+    {onsite.enabled && (
+      <>
+        <strong class="price">{yen(onsite.price)}</strong>
+        <p>お支払い方法：{onsite.paymentMethods.join("、") || "未定"}</p>
+      </>
+    )}
+  </article>
+</div>

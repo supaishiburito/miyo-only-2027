@@ -1,0 +1,228 @@
+/* Event poster */
+.hero {
+  --poster-ink: #233c43;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template:
+    ". art" 1fr
+    "heading art" auto
+    "details art" auto
+    ". art" 1fr / minmax(0, 0.96fr) minmax(0, 1.04fr);
+  min-height: 530px;
+  padding: clamp(1.7rem, 3vw, 2.65rem) max(2.3rem, calc((100% - 1240px) / 2));
+  overflow: hidden;
+  border-bottom: 1px solid #bfc6ab;
+  background:
+    url("/images/poster-sparks.svg") center / min(99%, 1360px) 100% no-repeat,
+    radial-gradient(
+      ellipse at 34% 34%,
+      #fffdf4 9%,
+      #faf7ea 42%,
+      transparent 74%
+    ),
+    linear-gradient(145deg, #f7f3e4 12%, #edf1dc 58%, #dbe5c9);
+}
+.hero:not(:has(.hero-art)) {
+  grid-template: "heading" auto "details" auto / minmax(0, 1fr);
+  align-content: center;
+}
+.hero-frame {
+  position: absolute;
+  inset: 12px 13px;
+  pointer-events: none;
+  border: 1px solid #a2aa827d;
+}
+.hero-frame::before {
+  position: absolute;
+  content: "";
+  inset: 4px;
+  border: 1px solid #fffcf1b8;
+}
+.hero-frame::after {
+  position: absolute;
+  content: "";
+  inset: 0 -6px;
+  background:
+    url("/images/botanical-sprig.svg") right top / clamp(65px, 11vw, 160px) auto
+      no-repeat,
+    url("/images/botanical-sprig.svg") left bottom / clamp(74px, 13vw, 188px)
+      auto no-repeat;
+  opacity: 0.78;
+}
+.hero-heading,
+.hero-details {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  padding-left: clamp(1.1rem, 4.4vw, 4.35rem);
+}
+.hero-heading {
+  grid-area: heading;
+  color: var(--poster-ink);
+}
+.hero-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #3f5846;
+  font: 700 clamp(0.77rem, 1.2vw, 0.99rem)/1.65 var(--font-sans);
+  letter-spacing: 0.09em;
+}
+.hero-kicker svg {
+  color: #846b41;
+  flex: none;
+}
+.hero h1 {
+  margin-block: 0.3em 0.12em;
+  color: var(--poster-ink);
+  font: 750 clamp(1.9rem, 3.8vw, 3.55rem)/1.35 var(--font-serif);
+  letter-spacing: -0.025em;
+  line-break: strict;
+  word-break: auto-phrase;
+  text-wrap: balance;
+}
+.hero-subtitle {
+  color: #41604b;
+  font: 400 clamp(1.35rem, 2.55vw, 2.4rem)/1.2 var(--font-display);
+  letter-spacing: 0.025em;
+  text-wrap: balance;
+}
+.hero-art {
+  grid-area: art;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  margin-inline: 0.8rem 1.75rem;
+}
+.hero-art img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: clamp(495px, 47vw, 660px);
+  object-fit: contain;
+  background: #f8f4e9;
+  box-shadow:
+    0 0 0 1px #aab2968c,
+    0 7px 0 -3px #fbf8ec,
+    0 8px 0 -3px #b6b99b,
+    0 25px 40px -23px #34413991;
+}
+.hero-details {
+  grid-area: details;
+  padding-top: clamp(1rem, 2.6vw, 2rem);
+}
+.hero-date {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.75rem;
+  width: fit-content;
+  max-width: 100%;
+  padding-block: 0.55rem;
+  border-block: 1px solid #a8b293;
+  color: #324f3d;
+}
+.hero-date-main {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 2.75vw, 2.55rem);
+  line-height: 1.15;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+.hero-date-status {
+  background: #e2eacd;
+  color: #344b32;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  padding: 0.14rem 0.45rem;
+  border: 1px solid #b3be9b;
+  border-radius: 3px;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: clamp(1rem, 2.2vw, 1.65rem);
+}
+.hero-actions .button {
+  min-height: 48px;
+}
+.hero-actions .primary {
+  background: #304d55;
+}
+.hero-actions .primary:hover {
+  background: #233f46;
+}
+
+@media (max-width: 960px) {
+  .hero-heading,
+  .hero-details {
+    padding-left: 0.3rem;
+  }
+  .hero-art {
+    margin-inline: 0.6rem 0.45rem;
+  }
+}
+@media (max-width: 740px) {
+  .hero {
+    grid-template: "heading" auto "art" auto "details" auto / minmax(0, 1fr);
+    gap: 1rem;
+    min-height: 0;
+    padding: 1.9rem clamp(1.15rem, 5.6vw, 2.6rem) 1.85rem;
+    background:
+      url("/images/poster-sparks.svg") center / 100% auto no-repeat,
+      linear-gradient(#fffdf2, #f7f5e6 44%, #eaf0da 78%, #dee8cd);
+  }
+  .hero-frame {
+    inset: 7px;
+  }
+  .hero-frame::after {
+    background-size:
+      clamp(40px, 11vw, 65px) auto,
+      clamp(40px, 11vw, 65px) auto;
+  }
+  .hero-heading,
+  .hero-details {
+    padding-left: 0;
+    text-align: center;
+  }
+  .hero-kicker,
+  .hero-date,
+  .hero-actions {
+    justify-content: center;
+  }
+  .hero-art {
+    margin-inline: auto;
+    width: min(100%, 395px);
+  }
+  .hero-art img {
+    max-height: min(103vw, 548px);
+  }
+  .hero-details {
+    padding-top: 0.15rem;
+  }
+  .hero-date {
+    margin-inline: auto;
+  }
+  .hero-actions {
+    gap: 0.48rem;
+    margin-top: 0.78rem;
+  }
+  .hero-actions .button {
+    gap: 0.45rem;
+    font-size: 0.8rem;
+    padding-inline: 0.7rem;
+  }
+  .hero-actions .button svg {
+    width: 14px;
+  }
+}
+@media (max-width: 355px) {
+  .hero-actions .button {
+    padding-inline: 0.55rem;
+    font-size: 0.73rem;
+  }
+}

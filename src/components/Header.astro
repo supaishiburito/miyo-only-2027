@@ -1,0 +1,19 @@
+---
+import { navigation } from "../config/navigation";
+import Brand from "./Brand.astro";
+
+const current = Astro.url.pathname;
+---
+
+<header class="header">
+  <div class="header-inner">
+    <Brand />
+    <nav aria-label="メインナビゲーション" class="site-nav">
+      {navigation.map(({ href, label }) => (
+        <a href={href} aria-current={href === current ? "page" : undefined}>
+          {label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>

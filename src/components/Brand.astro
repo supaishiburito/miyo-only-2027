@@ -1,0 +1,19 @@
+---
+import { event } from "../config/event";
+import { localImage } from "../utils/content";
+import Icon from "./Icon.astro";
+const logo = localImage(event.images.logo);
+---
+
+<a class="brand" href="/" aria-label={event.name + " ホーム"}>
+  {logo ? (
+    <img src={logo} alt={event.name} width="150" height="42" />
+  ) : (
+    <>
+      <span class="brand-icon">
+        <Icon name="flower" size={21} />
+      </span>
+      <span>{event.shortName}</span>
+    </>
+  )}
+</a>

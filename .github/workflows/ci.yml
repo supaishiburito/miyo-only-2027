@@ -1,0 +1,49 @@
+name: Check and build
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Validate website
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      SITE_URL: https://miyomiyo.supaishiburito.workers.dev
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Astro and TypeScript check
+        run: npm run check
+
+      - name: Formatting check
+        run: npm run lint
+
+      - name: Build website
+        run: npm run build
+
+      - name: Validate build output
+        run: |
+          test -s dist/index.html
+          test -s dist/404.html
+          test -s dist/robots.txt

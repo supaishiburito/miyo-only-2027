@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 760" fill="none">
+  <defs>
+    <path id="spark" d="M0-15C1-4 4-1 15 0 4 1 1 4 0 15-1 4-4 1-15 0-4-1-1-4 0-15Z"/>
+    <path id="diamond" d="M0-8 5 0 0 8-5 0Z"/>
+  </defs>
+  <g fill="#b39b62" fill-opacity=".72">
+    <use href="#spark" transform="translate(50 196) scale(.85)"/>
+    <use href="#spark" transform="translate(119 101) scale(.42)"/>
+    <use href="#spark" transform="translate(300 657) scale(.53)"/>
+    <use href="#spark" transform="translate(592 188) scale(1.03)"/>
+    <use href="#spark" transform="translate(664 547) scale(.65)"/>
+    <use href="#spark" transform="translate(1124 167) scale(.65)"/>
+    <use href="#spark" transform="translate(1222 456) scale(.95)"/>
+    <use href="#spark" transform="translate(1170 579) scale(.36)"/>
+  </g>
+  <g stroke="#819475" stroke-opacity=".65">
+    <use href="#diamond" transform="translate(70 531)"/>
+    <use href="#diamond" transform="translate(565 103) scale(.66)"/>
+    <use href="#diamond" transform="translate(607 236) scale(.5)"/>
+    <use href="#diamond" transform="translate(695 642)"/>
+    <use href="#diamond" transform="translate(1197 288) scale(.82)"/>
+    <use href="#diamond" transform="translate(1223 663) scale(.72)"/>
+  </g>
+</svg>

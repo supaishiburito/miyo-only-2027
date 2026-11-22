@@ -1,0 +1,33 @@
+---
+import Interior from "../layouts/Interior.astro";
+import InfoTable from "../components/InfoTable.astro";
+import Icon from "../components/Icon.astro";
+import { event, tba } from "../config/event";
+import { externalUrl } from "../utils/content";
+const venue = event.venue;
+const map = venue.name ? externalUrl(venue.mapUrl) : undefined;
+---
+
+<Interior
+  title="会場アクセス"
+  description="会場の所在地、交通手段、当日の入場口をご案内します。"
+>
+  <InfoTable
+    rows={[
+      ["会場", venue.name ?? "未定"],
+      ["所在地", venue.address ?? "未定"],
+      ["最寄り駅", venue.station ?? "未定"],
+    ]}
+  />
+  <section class="panel">
+    <h2>会場までの行き方</h2>
+    <p>{venue.directions ?? tba}</p>
+    {map && (
+      <a class="button secondary" href={map}>
+        地図を開く <Icon name="arrow" size={17} />
+      </a>
+    )}
+    <h3>入場口のご案内</h3>
+    <p>{venue.entrance ?? tba}</p>
+  </section>
+</Interior>

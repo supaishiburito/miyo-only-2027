@@ -1,0 +1,22 @@
+---
+import Interior from "../layouts/Interior.astro";
+import Icon from "../components/Icon.astro";
+import CircleCards from "../components/CircleCards.astro";
+import circles from "../data/circles.json";
+---
+
+<Interior
+  title="参加サークル"
+  description="サークル名・配置番号・サークルカットをご案内します。"
+>
+  {circles.length ? (
+    <CircleCards {circles} />
+  ) : (
+    <div class="empty-state">
+      <span class="ornament">
+        <Icon name="book" size={29} />
+      </span>
+      <p>参加サークルは後日公開予定です。</p>
+    </div>
+  )}
+</Interior>

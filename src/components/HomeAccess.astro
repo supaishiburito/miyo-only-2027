@@ -1,0 +1,50 @@
+---
+import { event } from "../config/event";
+import { homeExamples } from "../data/home-examples";
+import { externalUrl } from "../utils/content";
+import Icon from "./Icon.astro";
+import SectionTitle from "./SectionTitle.astro";
+
+const { venue } = event;
+const confirmedLocation = venue.name ?? venue.address;
+const example = !confirmedLocation;
+const location = confirmedLocation ?? homeExamples.location.name;
+const map = new URL("https://www.google.com/maps/search/");
+map.searchParams.set("api", "1");
+map.searchParams.set("query", venue.address ?? location);
+const mapLink = (!example && externalUrl(venue.mapUrl)) || map.href;
+const embed = example
+  ? homeExamples.location.embedUrl
+  : externalUrl(venue.mapEmbedUrl);
+---
+
+<section id="access" aria-labelledby="home-access-heading">
+  <SectionTitle title="会場アクセス" id="home-access-heading" />
+  <div class="home-map">
+    <div class="home-map-meta">
+      <div>
+        <p class="home-map-location">
+          <Icon name="pin" size={20} />
+          <strong>{location}</strong>
+        </p>
+        {!example && venue.name && venue.address && (
+          <p class="home-access-note">{venue.address}</p>
+        )}
+      </div>
+      <a class="text-link" href={mapLink}>
+        Google マップで開く <Icon name="arrow" size={16} />
+      </a>
+    </div>
+    {embed && <iframe
+      src={embed}
+      title={`${location}の地図`}
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></iframe>}
+  </div>
+  {!example && (
+    <a class="text-link home-details-link" href="/access/">
+      会場アクセスの詳細 <Icon name="arrow" size={16} />
+    </a>
+  )}
+</section>

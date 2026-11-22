@@ -1,0 +1,27 @@
+---
+import Interior from "../layouts/Interior.astro";
+import InfoTable from "../components/InfoTable.astro";
+import { event } from "../config/event";
+---
+
+<Interior
+  title="当日のスケジュール"
+  description="開場・閉場時間や、当日の進行をご案内します。"
+>
+  <InfoTable
+    rows={[
+      ["開催日", event.date ?? event.dateEstimate],
+      ["開催時間", event.hours ?? "調整中"],
+    ]}
+  />
+  <section class="panel">
+    <h2>タイムテーブル</h2>
+    {event.schedule.length ? (
+      <InfoTable
+        rows={event.schedule.map(({ time, label }) => [time, label])}
+      />
+    ) : (
+      <p>当日のタイムテーブルは後日公開予定です。</p>
+    )}
+  </section>
+</Interior>

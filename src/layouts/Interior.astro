@@ -1,0 +1,32 @@
+---
+import Layout from "./Layout.astro";
+import Icon from "../components/Icon.astro";
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+const { title, description, noindex } = Astro.props;
+---
+
+<Layout {title} {description} {noindex}>
+  <div class="page-head">
+    <div class="wrap">
+      <nav aria-label="パンくずリスト" class="breadcrumb">
+        <a href="/">ホーム</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">{title}</span>
+      </nav>
+      <div class="page-heading">
+        <span class="ornament">
+          <Icon name="flower" />
+        </span>
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap page-body">
+    <slot />
+  </div>
+</Layout>

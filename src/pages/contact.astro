@@ -1,0 +1,42 @@
+---
+import Interior from "../layouts/Interior.astro";
+import Icon from "../components/Icon.astro";
+import { event } from "../config/event";
+import { externalUrl, mailLink } from "../utils/content";
+const form = externalUrl(event.contact.formUrl);
+const email = mailLink(event.contact.email);
+const x = externalUrl(event.contact.xUrl);
+---
+
+<Interior
+  title="お問い合わせ"
+  description="イベントに関するお問い合わせ窓口のご案内です。"
+>
+  <section class="panel">
+    <h2>主催へのお問い合わせ</h2>
+    {form || email || x ? (
+      <div class="flex flex-wrap gap-3">
+        {form && (
+          <a class="button primary" href={form}>
+            お問い合わせフォーム <Icon name="arrow" size={17} />
+          </a>
+        )}
+        {x && (
+          <a class="button secondary" href={x}>
+            Xで問い合わせる <Icon name="arrow" size={17} />
+          </a>
+        )}
+        {email && (
+          <a class="button secondary" href={email}>
+            メールで問い合わせる
+          </a>
+        )}
+      </div>
+    ) : (
+      <p>お問い合わせ窓口は準備中です。開設までお待ちください。</p>
+    )}
+  </section>
+  <a class="text-link" href="/faq/">
+    よくある質問を見る →
+  </a>
+</Interior>

@@ -1,0 +1,70 @@
+---
+import { externalUrl, localImage } from "../utils/content";
+import Icon from "./Icon.astro";
+
+interface Circle {
+  name: string;
+  booth: string | null;
+  cut: string | null;
+  x: string | null;
+  pixiv: string | null;
+}
+
+interface Props {
+  circles: readonly Circle[];
+  heading?: "h2" | "h3";
+  showPendingBooth?: boolean;
+}
+
+const {
+  circles,
+  heading: Heading = "h2",
+  showPendingBooth = true,
+} = Astro.props;
+---
+
+<ul class="circle-grid">
+  {circles.map((circle) => {
+    const image = localImage(circle.cut);
+    const x = externalUrl(circle.x);
+    const pixiv = externalUrl(circle.pixiv);
+    return (
+      <li class="panel circle-card">
+        <div class="circle-cut">
+          {image ? (
+            <img
+              loading="lazy"
+              decoding="async"
+              src={image}
+              alt={circle.name + "のサークルカット"}
+            />
+          ) : (
+            <Icon name="book" size={32} />
+          )}
+        </div>
+        {(circle.booth || showPendingBooth) && (
+          <p class="badge">{circle.booth ?? "配置未定"}</p>
+        )}
+        <Heading>{circle.name}</Heading>
+        {(x || pixiv) && (
+          <div class="flex gap-4">
+            {x && (
+              <a class="text-link" href={x} aria-label={circle.name + "のX"}>
+                X
+              </a>
+            )}
+            {pixiv && (
+              <a
+                class="text-link"
+                href={pixiv}
+                aria-label={circle.name + "のpixiv"}
+              >
+                pixiv
+              </a>
+            )}
+          </div>
+        )}
+      </li>
+    );
+  })}
+</ul>

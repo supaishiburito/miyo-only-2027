@@ -1,0 +1,27 @@
+---
+import Interior from "../layouts/Interior.astro";
+import { event } from "../config/event";
+---
+
+<Interior
+  title="プライバシーポリシー"
+  description="お問い合わせ、チケット購入、参加申込に関わる個人情報の取り扱いについてご案内します。"
+>
+  <section class="panel">
+    <h2>個人情報の取り扱い</h2>
+    {event.privacy ? (
+      <p class="whitespace-pre-line">{event.privacy}</p>
+    ) : (
+      <p>
+        主催による個人情報の取り扱いについては、受付開始前にこちらでご案内します。
+      </p>
+    )}
+    <h3>外部サービスについて</h3>
+    <p>
+      チケット購入やサークル参加申込などで外部サービスをご利用の際は、各サービスのプライバシーポリシーをご確認ください。
+    </p>
+  </section>
+  <a class="text-link" href="/contact/">
+    お問い合わせ窓口へ →
+  </a>
+</Interior>
